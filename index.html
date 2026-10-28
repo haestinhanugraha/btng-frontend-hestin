@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison de Luxe | Showroom Mobil</title>
+  <meta name="description" content="Maison de Luxe, showroom mobil online. Jelajahi katalog, bandingkan unit, dan hitung simulasi cicilan dalam satu halaman.">
+  <meta name="theme-color" content="#F6EFE6">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#katalog">Lewati ke katalog</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Maison de Luxe, ke atas halaman">
+        <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#BD5210"/>
+              <stop offset="1" stop-color="#5A1F2B"/>
+            </linearGradient>
+          </defs>
+          <rect x="7" y="7" width="22" height="22" rx="4" transform="rotate(45 18 18)" fill="url(#lg)"/>
+          <path d="M11.5 23V13l6.5 6.5L24.5 13v10" fill="none" stroke="#EDE8DA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Maison <em>de Luxe</em></span>
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navigasi utama">
+        <a href="#katalog">Katalog</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+
+      <button class="fav-pill" id="favPill" type="button" aria-label="Lihat mobil favorit" data-magnetic>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.6-9 9-9 9z"/></svg>
+        Favorit <span class="fav-count" id="favCount">0</span>
+      </button>
+
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="scroll-progress" id="progress" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- ============ HERO LAYAR PENUH ============ -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <!-- Tirai pembuka -->
+      <div class="curtain-wrap" aria-hidden="true">
+        <div class="curtain"><span></span><span></span></div>
+        <p class="curtain-mark">Maison de Luxe</p>
+      </div>
+
+      <!-- Latar video: video, pewarnaan palet, bayangan -->
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+          <source src="mobil dua.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-tint" aria-hidden="true"></div>
+      <!-- Orb cahaya melayang + serbuk sari (diisi script.js) -->
+      <div class="hero-bg" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow rv" style="--d:-.4s">Showroom mobil eksklusif</p>
+          <h1 id="heroTitle" data-split><span class="word">Maison</span><span class="word it">de Luxe</span></h1>
+          <p class="hero-tagline rv" style="--d:.1s">Mobil pilihan, <em>siap dibawa pulang.</em></p>
+          <p class="hero-lead rv" style="--d:.2s">Jelajahi unit terbaru dari showroom kami. Saring, bandingkan, dan hitung cicilan tanpa pindah halaman.</p>
+
+          <form class="hero-search rv" style="--d:.3s" id="heroSearch" role="search">
+            <label class="visually-hidden" for="heroInput">Cari merek atau model mobil</label>
+            <input id="heroInput" type="search" placeholder="Cari merek atau model, mis. Civic" autocomplete="off">
+            <button class="btn btn-primary" type="submit" data-magnetic>Cari mobil</button>
+          </form>
+
+          <div class="hero-cta rv" style="--d:.4s">
+            <a class="btn btn-ghost-light btn-sm" href="#katalog" data-magnetic>Jelajahi katalog</a>
+            <a class="btn btn-ghost-light btn-sm" href="#layanan" data-magnetic>Layanan kami</a>
+          </div>
+        </div>
+
+        <div class="hero-aside">
+          <div class="stage-wrap" id="stageWrap">
+            <div class="stage" id="stage" aria-live="polite" aria-label="Unit pilihan">
+              <div class="stage-skel" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <div class="hero-foot-in">
+          <dl class="hero-stats" id="stats">
+            <div><dt>Unit di showroom</dt><dd data-stat="total">0</dd></div>
+            <div><dt>Siap dibeli</dt><dd data-stat="available">0</dd></div>
+            <div><dt>Merek</dt><dd data-stat="brands">0</dd></div>
+            <div><dt>Harga mulai</dt><dd data-stat="minPrice">-</dd></div>
+          </dl>
+          <div class="hero-tools">
+            <button class="vid-toggle" id="vidToggle" type="button" aria-pressed="false" aria-label="Jeda video latar">
+              <svg class="i-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+            </button>
+            <a class="scroll-cue" href="#katalog"><span>Gulir</span><i aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PITA BERJALAN ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>Unit terverifikasi</span><b>✦</b><span>Simulasi cicilan instan</span><b>✦</b><span>Test drive terjadwal</span><b>✦</b><span>Koleksi pilihan Maison de Luxe</span><b>✦</b>
+        </div>
+        <div class="marquee-group">
+          <span>Unit terverifikasi</span><b>✦</b><span>Simulasi cicilan instan</span><b>✦</b><span>Test drive terjadwal</span><b>✦</b><span>Koleksi pilihan Maison de Luxe</span><b>✦</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ KATALOG ============ -->
+    <section class="catalog" id="katalog" aria-labelledby="katalogTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="katalogTitle">Katalog mobil</h2>
+          <p class="result-info" id="resultInfo" role="status">Memuat data mobil…</p>
+        </div>
+
+        <div class="filters" aria-label="Filter katalog">
+          <div class="filter-row">
+            <label class="search-field">
+              <span class="visually-hidden">Cari nama atau merek</span>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+              <input id="search" type="search" placeholder="Cari nama atau merek" autocomplete="off">
+            </label>
+            <label class="field">Bahan bakar
+              <select id="fuel"><option value="all">Semua</option></select>
+            </label>
+            <label class="field">Transmisi
+              <select id="trans"><option value="all">Semua</option></select>
+            </label>
+            <label class="field">Urutkan
+              <select id="sort">
+                <option value="terbaru">Tahun terbaru</option>
+                <option value="murah">Harga terendah</option>
+                <option value="mahal">Harga tertinggi</option>
+                <option value="nama">Nama A-Z</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="chips" id="brandChips" role="group" aria-label="Filter merek"></div>
+
+          <div class="filter-row filter-row--bottom">
+            <div class="range">
+              <label for="price">Harga maksimal: <output id="priceOut" for="price">-</output></label>
+              <input id="price" type="range" min="0" max="100" step="1" value="100" disabled>
+            </div>
+            <label class="switch">
+              <input id="onlyAvail" type="checkbox">
+              <span>Hanya yang tersedia</span>
+            </label>
+            <button class="btn btn-ghost btn-sm" id="favOnly" type="button" aria-pressed="false">Favorit saya</button>
+            <div class="seg" role="group" aria-label="Tampilan daftar">
+              <button type="button" id="viewGrid" aria-pressed="true" aria-label="Tampilan kotak">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>
+              </button>
+              <button type="button" id="viewList" aria-pressed="false" aria-label="Tampilan daftar">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+              </button>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="reset" type="button">Atur ulang</button>
+          </div>
+        </div>
+
+        <div class="grid" id="grid" aria-busy="true"></div>
+        <div id="stateBox"></div>
+      </div>
+    </section>
+
+    <!-- ============ LAYANAN ============ -->
+    <section class="services" id="layanan" aria-labelledby="layananTitle">
+      <div class="wrap services-grid">
+        <h2 id="layananTitle">Beli mobil tanpa tebak-tebakan</h2>
+        <ul class="service-list">
+          <li>
+            <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></span>
+            <div>
+              <h3>Unit terverifikasi</h3>
+              <p>Setiap unit diperiksa mesin, kaki-kaki, dan kelengkapan suratnya sebelum dipajang.</p>
+            </div>
+          </li>
+          <li>
+            <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M8 16h2M12 16h2M16 12v4"/></svg></span>
+            <div>
+              <h3>Simulasi cicilan instan</h3>
+              <p>Atur uang muka dan tenor di halaman detail mobil, lalu lihat estimasi cicilan bulanannya.</p>
+            </div>
+          </li>
+          <li>
+            <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 13l9-9M16 8l2 2M14 10l2 2"/></svg></span>
+            <div>
+              <h3>Test drive terjadwal</h3>
+              <p>Pilih mobil yang Anda taksir, lalu jadwalkan test drive di waktu yang paling nyaman.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="kontak">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-brand">Maison <em>de Luxe</em></p>
+        <p class="footer-note">Driven by elegance, defined by excellence.</p>
+      </div>
+      <div>
+        <h2 class="footer-title">Kontak</h2>
+        <p>halo@maisondeluxe.id</p>
+        <p>Senin sampai Sabtu, 09.00 sampai 18.00</p>
+      </div>
+      <div>
+        <h2 class="footer-title">Jelajahi</h2>
+        <p><a href="#katalog">Katalog mobil</a></p>
+        <p><a href="#layanan">Layanan kami</a></p>
+        <p><a href="#top">Kembali ke atas</a></p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>Informasi lengkap, akses lebih mudah.</p>
+    </div>
+  </footer>
+
+  <!-- ============ BAR PERBANDINGAN ============ -->
+  <div class="cmp-bar" id="cmpBar" hidden>
+    <div class="cmp-thumbs" id="cmpThumbs"></div>
+    <p class="cmp-text" id="cmpText">Pilih minimal 2 mobil</p>
+    <button class="btn btn-primary btn-sm" id="cmpOpen" type="button" disabled>Bandingkan</button>
+    <button class="btn btn-ghost-light btn-sm" id="cmpClear" type="button">Kosongkan</button>
+  </div>
+
+  <!-- ============ DIALOG DETAIL ============ -->
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="detail" id="detailBody"></div>
+  </dialog>
+
+  <!-- ============ DIALOG PERBANDINGAN ============ -->
+  <dialog id="compareDialog" aria-labelledby="compareTitle">
+    <div class="compare">
+      <div class="compare-head">
+        <h2 id="compareTitle">Bandingkan mobil</h2>
+        <button class="dialog-close dialog-close--inline" id="compareClose" type="button" aria-label="Tutup perbandingan">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="compare-scroll" id="compareBody"></div>
+    </div>
+  </dialog>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+</body>
+</html>
